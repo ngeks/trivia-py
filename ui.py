@@ -43,6 +43,7 @@ class UI(Tk):
         self.mainloop()
 
     def display_new_question(self):
+        """Display a new question."""
         self.canvas.config(bg=BG_WHITE)
         if self.trivia.question_number < len(self.trivia.questions):
             question = self.trivia.get_new_question()
@@ -53,6 +54,7 @@ class UI(Tk):
             self.false_btn.config(state="disabled")
 
     def is_answer_correct(self, is_correct):
+        """Check if answer is correct. If yes, display new question."""
         if is_correct:
             self.canvas.config(bg=BG_CORRECT)
             self.score.config(text=f"Score: {self.trivia.score}/{len(self.trivia.questions)}")
@@ -61,7 +63,9 @@ class UI(Tk):
         self.after(1000, self.display_new_question)
 
     def true_btn_pressed(self):
+        """Verify if TRUE is the correct answer."""
         self.is_answer_correct(self.trivia.verify_answer("True"))
 
     def false_btn_pressed(self):
+        """Verify if FALSE is the correct answer."""
         self.is_answer_correct(self.trivia.verify_answer("False"))

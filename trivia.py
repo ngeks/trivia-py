@@ -6,12 +6,14 @@ class Trivia:
         self.current = None
 
     def get_new_question(self):
+        """Get new question from list."""
         import html
         self.current = self.questions[self.question_number]
         self.question_number += 1
         return html.unescape(self.current.question)
 
     def verify_answer(self, answer_given):
+        """Verify the answer given."""
         correct_answer = self.current.answer
 
         if answer_given == correct_answer:

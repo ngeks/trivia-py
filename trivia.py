@@ -11,7 +11,7 @@ class Trivia:
         self.question_number += 1
         return html.unescape(self.current_question.text)
 
-    def is_answer_correct(self, answer_given):
+    def verify_answer(self, answer_given):
         correct_answer = self.current_question.answer
 
         if answer_given == correct_answer:

@@ -1,9 +1,10 @@
 from ui import UI
 from question import Question
+from trivia import Trivia
 
 
 def fetch_trivia_data():
-    """Fetch trivia questions using API."""
+    """Fetch trivia questions from API."""
     import requests
 
     params = {
@@ -16,5 +17,4 @@ def fetch_trivia_data():
 
 if __name__ == '__main__':
     questions = [Question(data['question'], data['correct_answer']) for data in fetch_trivia_data()]
-    UI()
-    
+    UI(Trivia(questions))
